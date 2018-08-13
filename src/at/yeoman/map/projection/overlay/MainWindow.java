@@ -1,13 +1,14 @@
 package at.yeoman.map.projection.overlay;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 class MainWindow {
     private JFrame jframe;
 
-    MainWindow() {
+    MainWindow(BufferedImage mercatorMap) {
         jframe = new JFrame();
-        jframe.setContentPane(new MainPanel().getView());
+        jframe.setContentPane(new MainPanel(mercatorMap).getView());
     }
 
     void show() {
