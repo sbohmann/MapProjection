@@ -8,7 +8,7 @@ class MainPanel extends Container {
 
     MainPanel() {
         mainView = new OverlayPanel();
-        mainView.setPreferredSize(new Dimension(800, 600));
+        mainView.setPreferredSize(new Dimension(1200, 1200));
     }
 
     Container getView() {
