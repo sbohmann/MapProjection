@@ -1,22 +1,13 @@
-package at.yeoman.map.projection.overlay;
+package at.yeoman.map.projection.plot;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
-import java.io.File;
-import java.time.LocalTime;
 
-import static at.yeoman.map.rethrow.Rethrow.rethrow;
-
-class OverlayPanel extends JPanel {
-    private final BufferedImage mercatorMap;
+class PlotPanel extends JPanel {
     private BufferedImage buffer;
 
-    OverlayPanel() {
-        this.mercatorMap = loadMercatorMap();
+    PlotPanel() {
         createBuffer();
     }
 
@@ -26,10 +17,6 @@ class OverlayPanel extends JPanel {
         recreateBufferIfNecessary();
         paintBuffer(g);
     }
-
-    private BufferedImage loadMercatorMap() {
-        return rethrow(() -> ImageIO.read(new File("big mercator map.jpg")));
-    };
 
     private void recreateBufferIfNecessary() {
         if (buffer == null || getWidth() != buffer.getWidth() || getHeight() != buffer.getHeight()) {
@@ -44,7 +31,7 @@ class OverlayPanel extends JPanel {
     }
 
     private void paintExistingBuffer(Graphics2D g) {
-        HighQualityRenderingHints.set(g);
+        RenderingHints.set(g);
         int x = (getWidth() - buffer.getWidth()) / 2;
         int y = (getHeight() - buffer.getHeight()) / 2;
         g.drawImage(buffer, x, y, null);
@@ -60,7 +47,7 @@ class OverlayPanel extends JPanel {
 
     private void createAndPaintBuffer() {
         buffer = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
-        new OverlayPainter(mercatorMap, buffer).run();
+        new PlotPainter(buffer).run();
         repaint();
     }
 }

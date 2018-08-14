@@ -1,4 +1,4 @@
-package at.yeoman.map.projection.overlay;
+package at.yeoman.map.projection.plot;
 
 import java.awt.*;
 

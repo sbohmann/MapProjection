@@ -1,6 +1,7 @@
-package at.yeoman.map.projection.overlay;
+package at.yeoman.map.projection.plot;
 
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 
 class MainWindow {
     private JFrame jframe;

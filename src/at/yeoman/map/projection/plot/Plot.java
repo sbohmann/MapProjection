@@ -1,4 +1,4 @@
-package at.yeoman.map.projection.overlay;
+package at.yeoman.map.projection.plot;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -6,9 +6,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class Overlay {
+public class Plot {
     public static void main(String[] args) throws Exception {
-        new Overlay().run();
+        new Plot().run();
     }
 
     private void run() throws Exception {
