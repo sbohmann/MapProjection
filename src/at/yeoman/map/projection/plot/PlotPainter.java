@@ -1,39 +1,26 @@
 package at.yeoman.map.projection.plot;
 
-import at.yeoman.map.rendering.HighQualityRenderingHints;
+import at.yeoman.map.projection.Painter;
 
 import java.awt.*;
-import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.util.function.Function;
 
-class PlotPainter {
+import static at.yeoman.map.projection.MercatorProjection.latitudeForY;
+import static at.yeoman.map.projection.MercatorProjection.yForLatitude;
+
+class PlotPainter extends Painter {
     private static final double ScalingFactor = 250.0;
 
-    private final int width;
-    private final int height;
-    private final Graphics2D g;
-    private final double centerX;
-    private final double centerY;
-
     PlotPainter(BufferedImage buffer) {
-        width = buffer.getWidth();
-        height = buffer.getHeight();
-        centerX = width / 2.0;
-        centerY = height / 2.0;
-        g = buffer.createGraphics();
-        HighQualityRenderingHints.set(g);
+        super(buffer);
     }
 
     void run() {
         drawLine(0, centerY, width, centerY);
         drawLine(centerX, 0, centerX, height);
-        drawGraph(Color.red, x -> Math.log(1.0 / Math.cos(x) + Math.sin(x) / Math.cos(x)));
-        drawGraph(new Color(0x99ffff00, true), x -> Math.atan(Math.sinh(x)));
-    }
-
-    private void drawLine(double x1, double y1, double x2, double y2) {
-        g.draw(new Line2D.Double(x1, y1, x2, y2));
+        drawGraph(Color.red, x -> yForLatitude(x));
+        drawGraph(new Color(0x99ffff00, true), x -> latitudeForY(x));
     }
 
     private void drawGraph(Color color, Function<Double,Double> function) {

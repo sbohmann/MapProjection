@@ -1,22 +1,24 @@
 package at.yeoman.map.projection.overlay;
 
-import java.awt.*;
+import at.yeoman.map.projection.Painter;
+
+import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 
-class OverlayPainter {
+class OverlayPainter extends Painter {
     private BufferedImage mercatorMap;
-    private final int width;
-    private final int height;
-    private final Graphics2D g;
 
     OverlayPainter(BufferedImage mercatorMap, BufferedImage buffer) {
+        super(buffer);
         this.mercatorMap = mercatorMap;
-        width = buffer.getWidth();
-        height = buffer.getHeight();
-        g = buffer.createGraphics();
     }
 
     void run() {
         g.drawImage(mercatorMap, 0, 0, width, height, null);
+        int angleSteps = 6;
+        for (int angleStep = 0; angleStep < angleSteps; ++angleStep) {
+            double angle = angleStep * Math.PI / 2.0 / angleSteps;
+            //drawLine()
+        }
     }
 }
