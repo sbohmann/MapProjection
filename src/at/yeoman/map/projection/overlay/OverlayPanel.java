@@ -1,13 +1,12 @@
 package at.yeoman.map.projection.overlay;
 
+import at.yeoman.map.rendering.HighQualityRenderingHints;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ComponentAdapter;
-import java.awt.event.ComponentEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.time.LocalTime;
 
 import static at.yeoman.map.rethrow.Rethrow.rethrow;
 

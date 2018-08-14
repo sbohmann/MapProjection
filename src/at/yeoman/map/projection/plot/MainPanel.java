@@ -8,7 +8,7 @@ class MainPanel extends Container {
 
     MainPanel() {
         mainView = new PlotPanel();
-        mainView.setPreferredSize(new Dimension(800, 600));
+        mainView.setPreferredSize(new Dimension(1600, 1200));
     }
 
     Container getView() {

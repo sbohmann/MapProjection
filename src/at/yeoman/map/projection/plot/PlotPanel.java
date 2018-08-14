@@ -1,5 +1,7 @@
 package at.yeoman.map.projection.plot;
 
+import at.yeoman.map.rendering.HighQualityRenderingHints;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -31,7 +33,7 @@ class PlotPanel extends JPanel {
     }
 
     private void paintExistingBuffer(Graphics2D g) {
-        RenderingHints.set(g);
+        HighQualityRenderingHints.set(g);
         int x = (getWidth() - buffer.getWidth()) / 2;
         int y = (getHeight() - buffer.getHeight()) / 2;
         g.drawImage(buffer, x, y, null);
